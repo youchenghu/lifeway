@@ -1,0 +1,7 @@
+server:
+  port: 8080
+
+hyc:
+  datasource:
+    primary:
+      url: jdbc:mysql://127.0.0.1:3306/lifeway?characterEncoding=UTF8

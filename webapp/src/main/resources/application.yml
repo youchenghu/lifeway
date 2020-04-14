@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: @activeProfile@
+
+hyc:
+  datasource:
+    primary:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: youki360
+
+mybatis-plus:
+  type-aliases-package: com.hyc.**.model
+  mapper-locations: classpath*:com/hyc/**/dao/mapper/*.xml
