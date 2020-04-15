@@ -1,11 +1,15 @@
 package com.hyc.lifeway.api.user;
 
+import com.hyc.cs.core.security.Authorization;
 import com.hyc.cs.core.web.resolve.annotation.ResolveField;
 import com.hyc.lifeway.common.BaseApi;
 import com.hyc.lifeway.module.user.model.User;
 import com.hyc.lifeway.module.user.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -14,25 +18,26 @@ import org.springframework.web.bind.annotation.RestController;
  * @Description：
  */
 @RestController
+@RequestMapping("/user")
+@Api(tags = "用户Api")
 public class UserApi extends BaseApi {
 
     @Autowired
     UserService userService;
 
-    @GetMapping("/hello")
-    public String hello() {
-        return "Hello Lifeway!";
+    @ApiOperation("用户登录")
+    @GetMapping("/login")
+    public void login(String phone) {
+        User user = userService.getByPhone(phone);
+        String token = userService.generateAccessToken(user);
+        setAttr("token", token);
     }
 
-    @GetMapping("/hello2")
-    public void hello2() {
-        User byId = userService.getById(1);
-        setAttr("user", byId);
-    }
-
-    @GetMapping("/hello3")
-    public void hello3(@ResolveField("user_id") Integer userId) {
-        User byId = userService.getById(userId);
-        setAttr("user", byId);
+    @ApiOperation("获取用户信息")
+    @Authorization
+    @GetMapping("/getInfo")
+    public void getInfo() {
+        User accessUser = getAccessUser();
+        setAttr("user_info", accessUser);
     }
 }

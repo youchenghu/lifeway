@@ -49,8 +49,7 @@ public class SwaggerConfiguration {
     @Bean
     public ApiInfo swaggerApiInfo() {
         return new ApiInfoBuilder()
-                .title("接口文档")
-                .description("xx")
+                .title("lifeway项目接口文档")
                 .version("1.0")
                 .build();
     }

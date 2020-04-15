@@ -16,4 +16,18 @@ public interface UserService extends BaseService<User> {
      * @return
      */
     User getByToken(String token);
+
+    /**
+     * 根据手机号获取user
+     * @param phone
+     * @return
+     */
+    User getByPhone(String phone);
+
+    /**
+     * 生成token
+     * @param user
+     * @return
+     */
+    String generateAccessToken(User user);
 }
