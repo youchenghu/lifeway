@@ -17,7 +17,7 @@ public class DevTool {
                 .setReferenceClass(DevTool.class)
                 .setModuleName("")
                 .setTables(Arrays.asList(
-                        "user"
+                        "user_task"
                 ))
                 .run();
     }

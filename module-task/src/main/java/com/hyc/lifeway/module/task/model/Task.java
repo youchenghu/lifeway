@@ -46,5 +46,12 @@ public class Task extends BaseModel<Task> {
     @ApiModelProperty(value = "任务图片")
     private String picture;
 
+    @ApiModelProperty(value = "周期类型")
+    private String periodType;
 
+    @ApiModelProperty(value = "周期值")
+    private Integer period;
+
+    @ApiModelProperty(value = "分类")
+    private String classify;
 }
