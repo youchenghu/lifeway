@@ -17,4 +17,12 @@ public interface UserTaskService extends BaseService<UserTask> {
      * @return
      */
     List<UserTask> getUserTasks(Integer userId);
+
+    /**
+     * 完成任务
+     * @param userId
+     * @param userTaskId
+     * @return
+     */
+    UserTask finishTask(Integer userId, Integer userTaskId);
 }
