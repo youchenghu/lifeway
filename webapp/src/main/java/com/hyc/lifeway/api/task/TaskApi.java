@@ -35,5 +35,6 @@ public class TaskApi extends BaseApi {
         User accessUser = getAccessUser();
         List<Task> userCreatedTasks = taskService.getUserCreatedTasks(accessUser.getId());
         setAttr("tasks", userCreatedTasks);
+        System.out.println(1);
     }
 }
